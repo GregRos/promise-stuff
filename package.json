@@ -1,0 +1,26 @@
+{
+  "name": "promise-stuff",
+  "version": "0.1.0-alpha",
+  "description": "A library for extending existing Promise/A+ implementations with cool extra features that work well with async/await. With TypeScript support",
+  "keywords": ["promise", "promise-a", "timeout", "finally", "typescript", "extension", "utility", "async"],
+  "main": "dist/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/del": "^3.0.0",
+    "@types/gulp": "^4.0.5",
+    "@types/gulp-sourcemaps": "0.0.32",
+    "@types/node": "^8.5.2",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-sourcemaps": "^2.6.2",
+    "gulp-typescript": "^3.2.3",
+    "merge2": "^1.2.0",
+    "typescript": "^2.6.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
