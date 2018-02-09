@@ -2,7 +2,7 @@
  * A handler that is used to project or filter promises. The handler can either be synchronous or asynchronous.
  * If it is asynchronous, a promise that calls it will wait for it to finish, so it can delay it resolving or rejecting.
  */
-export type AsyncHandler<T, TResult> = (value : T, wasResolved : boolean) => TResult | PromiseLike<TResult>;
+export type AsyncCallback<T, TResult> = (value : T, wasResolved : boolean) => TResult | PromiseLike<TResult>;
 
 export interface ExtendedPromise<T> {
     /**
@@ -94,21 +94,13 @@ export interface ExtendedPromise<T> {
      * The callback will receive the rejection reason or result as an argument.
      * @param callback The action to perform.
      */
-    finally(callback : AsyncHandler<any, void>) : ExtendedPromise<T>;
+    finally(callback : AsyncCallback<any, void>) : ExtendedPromise<T>;
 
     /**
      * Returns a promise that will execute the given callback if `this` resolves, and then resolve with the same result.
      * @param callback The callback.
      */
-    each(callback : AsyncHandler<T, void>) : ExtendedPromise<T>;
-
-    /**
-     * Returns a promise that will wait for `this` to resolve, and then call `failReason` on its result.
-     * If the `failReason` returns a truthy value, then the returned promise will reject with that value. Otherwise, it will resolve with the value of `this`.
-     * @param failReason The predicate to validate the result against.
-     * @returns {Promise}
-     */
-    must(failReason : AsyncHandler<T, any>) : ExtendedPromise<T>;
+    each(callback : AsyncCallback<T, void>) : ExtendedPromise<T>;
 
     /**
      * Returns a promise that will return `true` if `this` resolves and `false` if `this` rejects. The returned promise always resolves.
