@@ -337,7 +337,8 @@ export module PromiseStuff {
      * @param {BasicPromiseConstructor} s
      */
     export function extendExisting(s : PromiseConstructorLike) {
-        for (let f of instanceFunctions) {
+        for (let k of Object.keys(Operators)) {
+            let f = Operators[k];
             if (!(f.name in s.prototype)) {
                 s.prototype[f.name] = function(...args : any[]) {
                     return f(this, ...args);
@@ -347,10 +348,14 @@ export module PromiseStuff {
         s.prototype.cast = function() {
             return this;
         };
-        for (let f of staticFunctions) {
+        let keySource = StaticOperators.prototype;
+        let impl = Operators.For(s);
+        for (let k of Object.getOwnPropertyNames(keySource)) {
+            if (k === "constructor") continue;
+            let f = impl[k];
             if (!(f.name in s)) {
                 s[f.name] = function(...args : any[]) {
-                    return f(this, ...args);
+                    return impl[f.name](...args);
                 };
             }
         }

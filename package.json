@@ -1,6 +1,6 @@
 {
   "name": "promise-stuff",
-  "version": "0.1.0-beta",
+  "version": "0.1.7-beta",
   "description": "A library for extending existing Promise/A+ implementations with cool extra features that work well with async/await. With TypeScript support",
   "keywords": [
     "promise",
@@ -23,7 +23,7 @@
   ],
   "repository": "https://github.com/GregRos/promise-stuff",
   "homepage": "https://github.com/GregRos/promise-stuff",
-  "main": "dist/index.js",
+  "main": "dist/lib/index.js",
   "dependencies": {},
   "devDependencies": {
     "@types/del": "^3.0.0",
@@ -35,7 +35,7 @@
     "typescript": "^2.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "author": "GregRos",
   "license": "MIT",
@@ -47,5 +47,6 @@
     "source": [
       "src/**/*.ts"
     ]
-  }
+  },
+  "typings" : "dist/lib/index.d.ts"
 }

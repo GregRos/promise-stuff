@@ -111,7 +111,7 @@ export interface ExtendedPromise<T> {
      * The callback will receive the rejection reason or result as an argument.
      * @param callback The action to perform.
      */
-    finally(callback : AsyncCallback<any, void>) : ExtendedPromise<T>;
+    lastly(callback : AsyncCallback<any, void>) : ExtendedPromise<T>;
 
     /**
      * Returns a promise that will execute the given callback if `this` resolves, and then resolve with the same result.
