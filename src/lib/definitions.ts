@@ -4,7 +4,25 @@
  */
 export type AsyncCallback<T, TResult> = (value : T, wasResolved : boolean) => TResult | PromiseLike<TResult>;
 
+export interface BasicPromise {
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = any, TResult2 = never>(onfulfilled?: ((value: any) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): any;
+}
+
+export interface BasicPromiseConstructor<P extends BasicPromise> {
+    readonly prototype : P;
+
+    new(executor: (resolve: (value?: any | PromiseLike<any>) => void, reject: (reason?: any) => void) => void): P;
+}
+
 export interface ExtendedPromise<T> {
+    readonly [Symbol.toStringTag]: "Promise";
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19,7 +37,6 @@ export interface ExtendedPromise<T> {
      * @returns A Promise for the completion of the callback.
      */
     catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): ExtendedPromise<T | TResult>;
-
     /**
      * Returns a promise that waits for `this` to finish for an amount of time depending on the type of `deadline`.
      * If `this` does not finish on time, `onTimeout` will be called. The returned promise will then behave like the promise returned by `onTimeout`.

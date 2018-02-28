@@ -4,7 +4,6 @@ import {StaticOperators} from "../../lib/implementation";
 
 const PromiseHelpers = StaticOperators.create(Promise);
 
+let p = (async() => {return 5;})().and().then(x => x[0]);
 
-test("operator tests", t => {
-    t.
-});
+let x : Promise<number> = p;

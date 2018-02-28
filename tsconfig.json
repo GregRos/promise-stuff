@@ -4,10 +4,15 @@
     "target": "es6",
     "sourceMap": true,
     "declaration": true,
-    "experimentalDecorators": true,
-    "lib": ["es2015", "dom"]
+    "lib": ["es2015", "dom"],
+    "outDir": "dist",
+    "allowUnreachableCode": true
   },
+  "include": [
+    "src/**/*.ts"
+  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }

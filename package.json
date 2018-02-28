@@ -1,6 +1,6 @@
 {
   "name": "promise-stuff",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-beta",
   "description": "A library for extending existing Promise/A+ implementations with cool extra features that work well with async/await. With TypeScript support",
   "keywords": [
     "promise",
@@ -12,6 +12,17 @@
     "utility",
     "async"
   ],
+  "directories": {
+    "test": "dist/__test__",
+    "lib": "dist/lib",
+    "example": "src/examples"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "repository": "https://github.com/GregRos/promise-stuff",
+  "homepage": "https://github.com/GregRos/promise-stuff",
   "main": "dist/index.js",
   "dependencies": {},
   "devDependencies": {
@@ -20,27 +31,20 @@
     "@types/gulp-sourcemaps": "0.0.32",
     "@types/node": "^8.5.2",
     "ava": "^0.24.0",
-    "del": "^3.0.0",
-    "glob": "^7.1.2",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-sourcemaps": "^2.6.2",
-    "gulp-typescript": "^3.2.3",
-    "jasmine-promises": "^0.4.1",
     "merge2": "^1.2.0",
-    "typescript": "^2.6.2"
+    "typescript": "^2.7.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "ava" : {
-    "files" : [
+  "author": "GregRos",
+  "license": "MIT",
+  "ava": {
+    "files": [
       "dist/__test__/**/*.spec.js",
       "!dist/__test/helpers/*.*"
     ],
-    "source" : [
+    "source": [
       "src/**/*.ts"
     ]
   }
