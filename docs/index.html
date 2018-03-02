@@ -64,6 +64,7 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="promise-stuff">Promise-stuff</h1>
 				<p><em>Because promises can use a lot more stuff!</em></p>
+				<p><a href="https://gregros.github.io/promise-stuff/">API</a></p>
 				<p><code>promise-stuff</code> is an awesome little library that adds extra functionality to your promises. It can be installed on any promise implementation or used as a set of static functions. </p>
 				<h2 id="using-promise-stuff">Using <code>promise-stuff</code></h2>
 				<p>There are a few ways of using the functions offerred by promise stuff.</p>
@@ -80,14 +81,14 @@
 				<pre><code><span class="hljs-keyword">import</span> {PromiseStuff} <span class="hljs-keyword">from</span> <span class="hljs-string">'promise-stuff'</span>;
 <span class="hljs-keyword">export</span> MyExtendedPromise = PromiseStuff.deriveNew(<span class="hljs-built_in">Promise</span>);
 <span class="hljs-keyword">let</span> newPromise = <span class="hljs-keyword">new</span> MyExtendedPromise(...); <span class="hljs-comment">//promise constructor</span>
-newPromise.finally(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
+newPromise.lastly(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
     <span class="hljs-comment">//cleanup</span>
 });
 </code></pre><h3 id="install-on-an-existing-promise">Install on an existing promise</h3>
 				<pre><code><span class="hljs-keyword">import</span> {PromiseStuff} <span class="hljs-keyword">from</span> <span class="hljs-string">'promise-stuff'</span>;
 PromiseStuff.extendExisting(<span class="hljs-built_in">Promise</span>);
 <span class="hljs-keyword">let</span> pr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(...);
-pr.finally(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
+pr.lastly(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
     <span class="hljs-comment">//cleanup</span>
 });
 </code></pre>

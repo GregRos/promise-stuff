@@ -1,6 +1,8 @@
 # Promise-stuff
 *Because promises can use a lot more stuff!*
 
+[API](https://gregros.github.io/promise-stuff/)
+
 `promise-stuff` is an awesome little library that adds extra functionality to your promises. It can be installed on any promise implementation or used as a set of static functions. 
 
 ## Using `promise-stuff`
@@ -23,7 +25,7 @@ Create a new promise constructor from an existing one, like a native `Promise` o
 	import {PromiseStuff} from 'promise-stuff';
 	export MyExtendedPromise = PromiseStuff.deriveNew(Promise);
 	let newPromise = new MyExtendedPromise(...); //promise constructor
-	newPromise.finally(x => {
+	newPromise.lastly(x => {
 		//cleanup
 	});
 
@@ -32,6 +34,6 @@ Create a new promise constructor from an existing one, like a native `Promise` o
 	import {PromiseStuff} from 'promise-stuff';
 	PromiseStuff.extendExisting(Promise);
 	let pr = new Promise(...);
-	pr.finally(x => {
+	pr.lastly(x => {
 		//cleanup
 	});
