@@ -1,14 +1,18 @@
 import test from 'ava';
+import {describe} from 'ava-spec';
+
 import {Operators} from "../../lib";
 import {PromiseStuff, StaticOperators} from "../../lib/implementation";
 import {ExtendedPromiseConstructor} from "../../lib/definitions";
-
 PromiseStuff.extendExisting(Promise);
 let ExtendedPromise = Promise as any as ExtendedPromiseConstructor;
 
 const from = ExtendedPromise.from;
 const fromAsync = (f) => from(f());
 
+class InternalError extends Error {
+
+}
 
 let resolveAfter3s =<T>(v ?: T) => from(new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -48,8 +52,77 @@ test("wait", async t => {
     t.deepEqual(secondDone, false);
 });
 
-test("timeout", async t => {
+describe("timeout", it => {
+    it("success", async t => {
+        let p = resolveAfter3s(1);
+        let pt = p.timeout(new Date(Date.now() + 3500), () => Promise.reject(null));
+        t.deepEqual(await pt, 1);
+    });
 
+    it("fail+resolve", async t => {
+        let p = resolveAfter3s(1);
+        let pt = await p.timeout(new Date(Date.now() + 100), () => Promise.resolve(null));
+        t.deepEqual(pt, null);
+    });
+
+    it("fail + reject", async t => {
+        let p =resolveAfter3s(1);
+        let err = new InternalError();
+        await t.throws(p.timeout(new Date(Date.now() + 100), () => Promise.reject(err)), InternalError);
+    });
 });
+
+test("soon", async t => {
+    let start = Date.now();
+    let end = await ExtendedPromise.soon(() => Date.now());
+    t.true(end - start <= 50);
+});
+
+test("never", async t => {
+    let p = resolveAfter3s(1);
+    let never = ExtendedPromise.never();
+    let fst = await Promise.race([p, never]);
+    t.deepEqual(fst, 1);
+});
+
+describe("create", it => {
+    it("resolves", async t => {
+        let p = await ExtendedPromise.create(async (resolve, reject) => {
+            resolve(5);
+        });
+        t.deepEqual(p, 5);
+    });
+
+    it("rejects", async t => {
+        let err = new InternalError();
+        let p = ExtendedPromise.create(async (resolve, reject) => {
+            reject(err);
+        });
+        await t.throws(p, InternalError);
+    });
+
+    it("executor rejects", async t => {
+        let err = new InternalError();
+        let p = ExtendedPromise.create(async (resolve, reject) => {
+            throw err;
+        });
+
+        await t.throws(p, InternalError);
+    })
+});
+
+describe("delay", it => {
+    it("delay", async t => {
+        let x = resolveAfter3s(5).delay(1000);
+        let start = Date.now();
+        let r  = await x;
+        t.deepEqual(r, 5);
+        let dif = Date.now() - start;
+        t.true(dif >= 3995 && dif <= 4050);
+    })
+});
+
+
+
 
 
