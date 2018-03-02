@@ -1,6 +1,8 @@
 # Promise-stuff
 *Because promises can use a lot more stuff!*
 
+[![npm](https://badge.fury.io/js/promise-stuff.svg )](https://www.npmjs.com/package/promise-stuff)
+
 [API](https://gregros.github.io/promise-stuff/modules/promise_stuff.html)
 
 `promise-stuff` is an awesome little library that adds extra functionality to your promises. It can be installed on any promise implementation or used as a set of static functions. 
@@ -37,3 +39,12 @@ Create a new promise constructor from an existing one, like a native `Promise` o
 	pr.lastly(x => {
 		//cleanup
 	});
+
+## `Promise-stuff-es6`
+[![npm](https://badge.fury.io/js/promise-stuff-es6.svg )](https://www.npmjs.com/package/promise-stuff-es6)
+
+This is a small package designed to integrate `promsise-stuff` into the native ES6 promise by doing:
+
+    PromiseStuff.extendExisting(Promise);
+
+
