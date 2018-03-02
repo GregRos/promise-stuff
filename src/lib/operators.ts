@@ -7,8 +7,18 @@ import {isFunction, isPromiseLike, makeRejectingPromise, normalizeTime} from "./
 import {ExtendedPromise} from "./definitions";
 
 
+/**
+ * A module that provides static bindings for functions implemented by [[ExtendedPromise]].
+ */
 export module Operators {
-    export function For<P extends BasicPromise>(ctor: BasicPromiseConstructor<P>) {
+    /**
+     * Returns a `StaticOperators` module, which provides static bindings for functions implemented by a [[ExtendedPromiseConstructor]].
+     * The `StaticOperators` instance provides functions that use the constructor `ctor` internally.
+     * @param {BasicPromiseConstructor<P extends BasicPromise<*>>} ctor The promise constructor for which to create an operators module.
+     * @returns {StaticOperators<BasicPromise<*>>}
+     * @constructor
+     */
+    export function For<P extends BasicPromise<any>>(ctor: BasicPromiseConstructor<P>) {
         return StaticOperators.create(ctor);
     }
 
@@ -16,7 +26,7 @@ export module Operators {
      * Static version of the `race` function.
      * @see [[ExtendedPromise.race]]
      */
-    export function race<P extends BasicPromise, T = any>(promise: P, ...others: PromiseLike<T>[]): P {
+    export function race<P extends BasicPromise<T>, T = any>(promise: P, ...others: PromiseLike<T>[]): P {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         others.unshift(promise);
 
@@ -37,7 +47,14 @@ export module Operators {
         });
     }
 
-    export function and<P extends BasicPromise, T = any>(promise: P, ...others: PromiseLike<T>[]): P {
+    /**
+     * Static version of the `and` function.
+     * @see [[ExtendedPromise.and]]
+     * @param {P} promise
+     * @param {PromiseLike<T>} others
+     * @returns {BasicPromise<*[]>} The return type of this function is meant to be `P<T[]>`, where `P` is the input promise type.
+     */
+    export function and<P extends BasicPromise<T>, T = any>(promise: P, ...others: PromiseLike<T>[]): BasicPromise<any[]> {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         others.unshift(promise);
         if ("all" in ctor) {
@@ -65,7 +82,14 @@ export module Operators {
         });
     }
 
-    export function fallback<P extends BasicPromise, T = any>(promise: P, ...others: (PromiseLike<T> | T | ((reason: any) => (PromiseLike<T> | T)))[]): P {
+    /**
+     * Static version of the `fallback` function.
+     * @see [[ExtendedPromise.fallback]]
+     * @param {P} promise
+     * @param {PromiseLike<T> | ((reason: any) => (PromiseLike<T> | T)) | T} others
+     * @returns {P}
+     */
+    export function fallback<P extends BasicPromise<T>, T = any>(promise: P, ...others: (PromiseLike<T> | T | ((reason: any) => (PromiseLike<T> | T)))[]): P {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         others.unshift(promise);
         let lastFailure = null;
@@ -96,15 +120,29 @@ export module Operators {
         });
     }
 
-    export function delay<P extends BasicPromise, T = any>(promise: P, time: number | Date): P {
+    /**
+     * Static version of the `delay` function.
+     * @see [[ExtendedPromise.delay]]
+     * @param {P} promise
+     * @param {number | Date} time
+     * @returns {P}
+     */
+    export function delay<P extends BasicPromise<T>, T = any>(promise: P, time: number | Date): P {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         let operators = For(ctor);
         return promise.then(x => operators.wait(time).then(() => x), x => operators.wait(time).then(() => {
             return makeRejectingPromise(ctor, x);
-        }));
+        })) as P;
     }
 
-    export function each<P extends BasicPromise, T = any>(promise: P, action: AsyncCallback<any, void>): P {
+    /**
+     * Static version of the `each` function.
+     * @see [[ExtendedPromise.each]]
+     * @param {P} promise
+     * @param {AsyncCallback<any, void>} action
+     * @returns {P}
+     */
+    export function each<P extends BasicPromise<T>, T = any>(promise: P, action: AsyncCallback<any, void>): P {
         return promise.then(x => {
             let p = action(x, true) as any;
             if (p instanceof promise.constructor) {
@@ -112,10 +150,17 @@ export module Operators {
             } else {
                 return x;
             }
-        })
+        }) as P
     }
 
-    export function lastly<P extends BasicPromise>(promise: P, action: AsyncCallback<any, void>): P {
+    /**
+     * Static version of the `lastly` function.
+     * @see [[ExtendedPromise.lastly]]
+     * @param {P} promise
+     * @param {AsyncCallback<any, void>} action
+     * @returns {P}
+     */
+    export function lastly<T, P extends BasicPromise<T>>(promise: P, action: AsyncCallback<any, void>): P {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         return promise.then(x => {
             let p = action(x, true) as any;
@@ -127,10 +172,17 @@ export module Operators {
             if (p instanceof ctor) {
                 return p.then(() => makeRejectingPromise(ctor, err));
             }
-        });
+        }) as P;
     }
 
-    export function mustNot<P extends BasicPromise, T = any>(promise: P, failReason: AsyncCallback<T, any>): P {
+    /**
+     * Static version of the `mustNot` function.
+     * @see [[ExtendedPromise.mustNot]]
+     * @param {P} promise
+     * @param {AsyncCallback<T, any>} failReason
+     * @returns {P}
+     */
+    export function mustNot<P extends BasicPromise<T>, T = any>(promise: P, failReason: AsyncCallback<T, any>): P {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         return promise.then(result => {
             let p = failReason(result, true) as any;
@@ -148,10 +200,17 @@ export module Operators {
             } else {
                 return result;
             }
-        });
+        }) as P;
     }
 
-    export function stall<P extends BasicPromise>(promise: P, time: number | Date): P {
+    /**
+     * Static version of the `stall` function.
+     * @see [[ExtendedPromise.stall]]
+     * @param {P} promise
+     * @param {number | Date} time
+     * @returns {P}
+     */
+    export function stall<P extends BasicPromise<T>, T>(promise: P, time: number | Date): P {
         let deadline = Date.now() + normalizeTime(time);
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         return new ctor((resolve, reject) => {
@@ -177,7 +236,15 @@ export module Operators {
         });
     }
 
-    export function timeout<P extends BasicPromise, T>(promise: P, time: number | Date, onTimeout ?: () => T | PromiseLike<T>): P {
+    /**
+     * Static version of the `timeout` function.
+     * @see [[ExtendedPromise.timeout]]
+     * @param {P} promise
+     * @param {number | Date} time
+     * @param {() => (PromiseLike<T> | T)} onTimeout
+     * @returns {P}
+     */
+    export function timeout<P extends BasicPromise<T>, T>(promise: P, time: number | Date, onTimeout ?: () => T | PromiseLike<T>): P {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
         let stat = For(ctor);
         let timeoutTk = {} as any;
@@ -187,15 +254,27 @@ export module Operators {
                 return result;
             }
             return x;
-        });
+        }) as P;
     }
 
-    export function test<P extends BasicPromise, T>(promise: P): P {
-        return promise.then(x => true, x => false);
+    /**
+     * Static version of the `test` function.
+     * @see [[ExtendedPromise.test]]
+     * @param {P} promise
+     * @returns {BasicPromise<boolean>} The return type is meant to be `P<boolean>`, where `P` is the promise type.
+     */
+    export function test<P extends BasicPromise<T>, T>(promise: P): BasicPromise<boolean> {
+        return promise.then(x => true, x => false) as P;
     }
 
-    export function invert<P extends BasicPromise>(promise: P): P {
+    /**
+     * Static version of the `invert` function.
+     * @see [[ExtendedPromise.invert]]
+     * @param {P} promise
+     * @returns {BasicPromise<*>} The return type of this function is meant to be `P<any>`, where `P` is the promise type.
+     */
+    export function invert<T, P extends BasicPromise<T>>(promise: P): BasicPromise<any> {
         let ctor = promise.constructor as BasicPromiseConstructor<P>;
-        return promise.then(x => makeRejectingPromise(ctor, x), err => err);
+        return promise.then(x => makeRejectingPromise(ctor, x), err => err) as P;
     }
 }

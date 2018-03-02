@@ -39,7 +39,8 @@
     "typescript": "^2.7.2"
   },
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "typedoc" : "typedoc --target es6 --out ./docs --name \"promise-stuff\"  src/lib --excludeExternals --excludePrivate"
   },
   "author": "GregRos",
   "license": "MIT",

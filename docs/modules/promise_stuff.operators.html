@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A module that provides static bindings for functions implemented by <a href="../interfaces/promise_stuff.extendedpromise.html">ExtendedPromise</a>.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -103,19 +110,32 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:10</li>
+									<li>Defined in operators.ts:21</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a <code>StaticOperators</code> module, which provides static bindings for functions implemented by a <a href="../interfaces/promise_stuff.extendedpromiseconstructor.html">ExtendedPromiseConstructor</a>.
+									The <code>StaticOperators</code> instance provides functions that use the constructor <code>ctor</code> internally.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>constructor</dt>
+									<dd></dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>ctor: <a href="../interfaces/promise_stuff.basicpromiseconstructor.html" class="tsd-signature-type">BasicPromiseConstructor</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The promise constructor for which to create an operators module.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/promise_stuff.staticoperators.html" class="tsd-signature-type">StaticOperators</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -126,19 +146,29 @@
 					<a name="and" class="tsd-anchor"></a>
 					<h3>and</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">and&lt;P, T&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span>, <span class="tsd-signature-symbol">...</span>others<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span></li>
+						<li class="tsd-signature tsd-kind-icon">and&lt;P, T&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span>, <span class="tsd-signature-symbol">...</span>others<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:39</li>
+									<li>Defined in operators.ts:57</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>and</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#and">ExtendedPromise.and</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>
@@ -153,7 +183,8 @@
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>others: <span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">P</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The return type of this function is meant to be <code>P&lt;T[]&gt;</code>, where <code>P</code> is the input promise type.</p>
 						</li>
 					</ul>
 				</section>
@@ -167,13 +198,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:98</li>
+									<li>Defined in operators.ts:130</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>delay</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#delay">ExtendedPromise.delay</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>
@@ -202,13 +243,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:106</li>
+									<li>Defined in operators.ts:145</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>each</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#each">ExtendedPromise.each</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>
@@ -237,13 +288,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:67</li>
+									<li>Defined in operators.ts:92</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>fallback</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#fallback">ExtendedPromise.fallback</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>
@@ -266,19 +327,32 @@
 					<a name="invert" class="tsd-anchor"></a>
 					<h3>invert</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">invert&lt;P&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span></li>
+						<li class="tsd-signature tsd-kind-icon">invert&lt;T, P&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:196</li>
+									<li>Defined in operators.ts:276</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>invert</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#invert">ExtendedPromise.invert</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -287,7 +361,8 @@
 									<h5>promise: <span class="tsd-signature-type">P</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">P</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The return type of this function is meant to be <code>P&lt;any&gt;</code>, where <code>P</code> is the promise type.</p>
 						</li>
 					</ul>
 				</section>
@@ -295,19 +370,32 @@
 					<a name="lastly" class="tsd-anchor"></a>
 					<h3>lastly</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">lastly&lt;P&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span>, action<span class="tsd-signature-symbol">: </span><a href="promise_stuff.html#asynccallback" class="tsd-signature-type">AsyncCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span></li>
+						<li class="tsd-signature tsd-kind-icon">lastly&lt;T, P&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span>, action<span class="tsd-signature-symbol">: </span><a href="promise_stuff.html#asynccallback" class="tsd-signature-type">AsyncCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:117</li>
+									<li>Defined in operators.ts:163</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>lastly</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#lastly">ExtendedPromise.lastly</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -333,13 +421,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:132</li>
+									<li>Defined in operators.ts:185</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>mustNot</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[ExtendedPromise.mustNot]]</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>
@@ -368,7 +466,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:18</li>
+									<li>Defined in operators.ts:29</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -384,7 +482,7 @@
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>
@@ -407,19 +505,32 @@
 					<a name="stall" class="tsd-anchor"></a>
 					<h3>stall</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">stall&lt;P&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span>, time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span></li>
+						<li class="tsd-signature tsd-kind-icon">stall&lt;P, T&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span>, time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:153</li>
+									<li>Defined in operators.ts:213</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>stall</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#stall">ExtendedPromise.stall</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								</li>
+								<li>
+									<h4>T</h4>
 								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -439,19 +550,29 @@
 					<a name="test" class="tsd-anchor"></a>
 					<h3>test</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">test&lt;P, T&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span></li>
+						<li class="tsd-signature tsd-kind-icon">test&lt;P, T&gt;<span class="tsd-signature-symbol">(</span>promise<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:192</li>
+									<li>Defined in operators.ts:266</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>test</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#test">ExtendedPromise.test</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>
@@ -463,7 +584,8 @@
 									<h5>promise: <span class="tsd-signature-type">P</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">P</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The return type is meant to be <code>P&lt;boolean&gt;</code>, where <code>P</code> is the promise type.</p>
 						</li>
 					</ul>
 				</section>
@@ -477,13 +599,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in operators.ts:179</li>
+									<li>Defined in operators.ts:247</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static version of the <code>timeout</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/promise_stuff.extendedpromise.html#timeout">ExtendedPromise.timeout</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a></h4>
+									<h4>P<span class="tsd-signature-symbol">: </span><a href="../interfaces/promise_stuff.basicpromise.html" class="tsd-signature-type">BasicPromise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 								<li>
 									<h4>T</h4>

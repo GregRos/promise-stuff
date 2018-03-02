@@ -1,7 +1,7 @@
 /** @private */ /** */
 import {BasicPromise, BasicPromiseConstructor} from "./definitions";
 
-export function makeRejectingPromise<P extends BasicPromise>(ctor : BasicPromiseConstructor<P>, value ?: any) {
+export function makeRejectingPromise<P extends BasicPromise<any>>(ctor : BasicPromiseConstructor<P>, value ?: any) {
     if ("reject" in ctor) {
         return (ctor as any).reject(value);
     }
@@ -10,7 +10,7 @@ export function makeRejectingPromise<P extends BasicPromise>(ctor : BasicPromise
     })
 }
 /** @external */
-export function makeResolvingPromise<P extends BasicPromise, T>(ctor : BasicPromiseConstructor<P>, value : T | PromiseLike<T>) {
+export function makeResolvingPromise<P extends BasicPromise<any>, T>(ctor : BasicPromiseConstructor<P>, value : T | PromiseLike<T>) {
     if ("resolve" in ctor) {
         return (ctor as any).resolve(value);
     }
