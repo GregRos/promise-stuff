@@ -1,7 +1,7 @@
 # Promise-stuff
 *Because promises can use a lot more stuff!*
 
-[API](https://gregros.github.io/promise-stuff/)
+[API](https://gregros.github.io/promise-stuff/modules/promise_stuff.html)
 
 `promise-stuff` is an awesome little library that adds extra functionality to your promises. It can be installed on any promise implementation or used as a set of static functions. 
 
