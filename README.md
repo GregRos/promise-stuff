@@ -11,7 +11,7 @@ Here is an example:
 
 	import {Operators} from 'promise-stuff'
 	let p = new Promise(...);
-	let result = Operators.finally(p, x => {
+	let result = Operators.lastly(p, x => {
 		//cleanup
 	});
 

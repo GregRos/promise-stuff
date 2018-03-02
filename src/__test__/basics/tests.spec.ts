@@ -2,8 +2,9 @@ import test from 'ava';
 import {describe} from 'ava-spec';
 
 import {Operators} from "../../lib";
-import {PromiseStuff, StaticOperators} from "../../lib/implementation";
+import {PromiseStuff} from "../../lib/core";
 import {ExtendedPromiseConstructor} from "../../lib/definitions";
+import {StaticOperators} from "../../lib/static-operators";
 PromiseStuff.extendExisting(Promise);
 let ExtendedPromise = Promise as any as ExtendedPromiseConstructor;
 

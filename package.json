@@ -33,6 +33,9 @@
     "ava": "^0.24.0",
     "ava-spec": "^1.1.1",
     "merge2": "^1.2.0",
+    "typedoc": "^0.10.0",
+    "typedoc-plugin-external-module-name": "^1.1.1",
+    "typedoc-plugin-internal-external": "^1.0.10",
     "typescript": "^2.7.2"
   },
   "scripts": {

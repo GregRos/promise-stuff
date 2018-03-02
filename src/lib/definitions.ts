@@ -1,9 +1,11 @@
 /**
- * A handler that is used to project or filter promises. The handler can either be synchronous or asynchronous.
- * If it is asynchronous, a promise that calls it will wait for it to finish, so it can delay it resolving or rejecting.
- */
+ * @module promise-stuff
+ */ /** */
 export type AsyncCallback<T, TResult> = (value : T, wasResolved : boolean) => TResult | PromiseLike<TResult>;
 
+/**
+ * Similar to PromiseLike<any>. Convertible from any Promise<T>.
+ */
 export interface BasicPromise {
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -14,13 +16,24 @@ export interface BasicPromise {
     then<TResult1 = any, TResult2 = never>(onfulfilled?: ((value: any) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): any;
 }
 
+type aa = Promise<any>;
+
+/**
+ * Constructor for a Promise-like object.
+ */
 export interface BasicPromiseConstructor<P extends BasicPromise> {
     readonly prototype : P;
 
     new(executor: (resolve: (value?: any | PromiseLike<any>) => void, reject: (reason?: any) => void) => void): P;
 }
 
+/**
+ * A promise extended with all the extra functionality of 'promise-stuff'.
+ */
 export interface ExtendedPromise<T> {
+    /**
+     * A symbol property specifying that this is a promise.
+     */
     readonly [Symbol.toStringTag]: "Promise";
 
     /**
@@ -37,6 +50,7 @@ export interface ExtendedPromise<T> {
      * @returns A Promise for the completion of the callback.
      */
     catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): ExtendedPromise<T | TResult>;
+
     /**
      * Returns a promise that waits for `this` to finish for an amount of time depending on the type of `deadline`.
      * If `this` does not finish on time, `onTimeout` will be called. The returned promise will then behave like the promise returned by `onTimeout`.
@@ -127,6 +141,9 @@ export interface ExtendedPromise<T> {
     test() : ExtendedPromise<boolean>;
 }
 
+/**
+ * A promise constructor extended by all the functionality of `promise-stuff`.
+ */
 export interface ExtendedPromiseConstructor {
 
     /**
