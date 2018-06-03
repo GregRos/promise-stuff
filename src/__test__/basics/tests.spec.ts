@@ -5,6 +5,7 @@ import {Operators} from "../../lib";
 import {PromiseStuff} from "../../lib/core";
 import {ExtendedPromiseConstructor} from "../../lib/definitions";
 import {StaticOperators} from "../../lib/static-operators";
+import {EventEmitter} from "events";
 PromiseStuff.extendExisting(Promise);
 let ExtendedPromise = Promise as any as ExtendedPromiseConstructor;
 
@@ -123,7 +124,18 @@ describe("delay", it => {
     })
 });
 
-
+describe("eventOnce", it => {
+    it("EventEmitter", async t => {
+        let ee = new EventEmitter();
+        let p = await ExtendedPromise.eventOnce(ee, "Hello").timeout(3000, () => Promise.resolve("TimedOut"));
+        t.deepEqual(p, "TimedOut");
+        let q = ExtendedPromise.eventOnce(ee, "Hello");
+        ee.emit("Hello", "Hello");
+        t.deepEqual(await q, "Hello");
+        ee.emit("Hello", "Goodbye");
+        t.deepEqual(await q, "Hello");
+    });
+})
 
 
 

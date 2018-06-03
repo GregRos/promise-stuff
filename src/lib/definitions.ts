@@ -5,6 +5,8 @@
 /**
  * An asynchronous callback that handles the value yielded by a promise. The callback returns a promise that another promise will wait on.
  */
+import {WithEvents} from "./static-operators";
+
 export type AsyncCallback<T, TResult> = (value : T, wasResolved : boolean) => TResult | PromiseLike<TResult>;
 
 
@@ -204,6 +206,8 @@ export interface ExtendedPromiseConstructor {
      * @returns {PromiseLike<T>} The return type is meant to be `P<T>`, where `P` is the underlying promise type.
      */
     create<T>(executor : (resolve : ((x : T) => void), reject : ((y : T) => void)) => void | Promise<void>) : ExtendedPromise<T>;
+
+    eventOnce<TEvent extends string, TTarget extends WithEvents<TEvent>>(target : TTarget, event : TEvent) : ExtendedPromise<any>;
 }
 
 

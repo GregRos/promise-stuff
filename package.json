@@ -1,6 +1,6 @@
 {
   "name": "promise-stuff",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A library for extending existing Promise/A+ implementations with cool extra features that work well with async/await. With TypeScript support",
   "keywords": [
     "promise",

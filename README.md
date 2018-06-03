@@ -40,6 +40,8 @@ Create a new promise constructor from an existing one, like a native `Promise` o
 		//cleanup
 	});
 
+## Examples
+
 ## `Promise-stuff-es6`
 [![npm](https://badge.fury.io/js/promise-stuff-es6.svg )](https://www.npmjs.com/package/promise-stuff-es6)
 
