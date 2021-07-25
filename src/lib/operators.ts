@@ -146,7 +146,7 @@ export module Operators {
         return promise.then(x => {
             let p = action(x, true) as any;
             if (p instanceof promise.constructor) {
-                return p.then(() => x);
+                return (p as any).then(() => x);
             } else {
                 return x;
             }

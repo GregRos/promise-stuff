@@ -30,11 +30,12 @@ export class StaticOperators<P extends BasicPromise<any>> {
      * @returns {P}
      */
     wait<T = any>(time: number | Date, value ?: T): P {
-        time = Math.max(0, normalizeTime(time));
+        let normalTime = Math.max(0, normalizeTime(time));
         return new this.ctor((resolve, reject) => {
+            let a = normalTime;
             setTimeout(() => {
                 resolve(value);
-            }, time);
+            }, normalTime);
         });
     }
 

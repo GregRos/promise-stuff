@@ -27,6 +27,13 @@ let rejectAfter3s = <T>(v ?: any) => from(new Promise((resolve, reject) => {
     }, 3000);
 }));
 
+test("finally", async t => {
+    const x = rejectAfter3s(new Error());
+    let a = 1;
+    await x.finally(() => a = 5).catch(() => {});
+    t.is(a, 5);
+})
+
 test("and", async t => {
     let two = await resolveAfter3s(1).and(resolveAfter3s(1));
     t.deepEqual(two, [1, 1]);

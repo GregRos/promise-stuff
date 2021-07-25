@@ -35,6 +35,9 @@ export module PromiseStuff {
                 }
             }
         }
+        if (!("finally" in ExtendedPromise.prototype)) {
+            (ExtendedPromise.prototype as any).finally = (ExtendedPromise.prototype as any).lastly;
+        }
 
         let operators = Operators.For(constructor);
 
