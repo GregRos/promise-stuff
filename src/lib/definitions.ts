@@ -32,7 +32,6 @@ export interface BasicPromiseConstructor<P extends BasicPromise<any>> {
 
     new(executor: (resolve: (value?: any | PromiseLike<any>) => void, reject: (reason?: any) => void) => void): P;
 }
-
 /**
  * A promise extended with all the extra functionality of 'promise-stuff'.
  */
@@ -40,7 +39,15 @@ export interface ExtendedPromise<T> {
     /**
      * A symbol property specifying that this is a promise.
      */
-    readonly [Symbol.toStringTag]: "Promise";
+    readonly [Symbol.toStringTag]: string;
+
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -48,7 +55,7 @@ export interface ExtendedPromise<T> {
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed. The return type is meant to be `Self<TResult1 | TResult>`.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): ExtendedPromise<TResult1 | TResult2>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
 
     /**
      * Attaches a callback for only the rejection of the Promise.
@@ -56,7 +63,7 @@ export interface ExtendedPromise<T> {
      * @returns A Promise for the completion of the callback. The return type is meant to be `Self<T | TResult>`, where `Self` is the current promise type.
      *
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): ExtendedPromise<T | TResult>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
 
     /**
      * Returns a promise that waits for `this` to finish for an amount of time depending on the type of `deadline`.

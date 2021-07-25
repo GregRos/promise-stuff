@@ -4,7 +4,7 @@
     "target": "es6",
     "sourceMap": true,
     "declaration": true,
-    "lib": ["es2015", "dom"],
+    "lib": ["es2018", "dom"],
     "outDir": "dist",
     "allowUnreachableCode": true
   },
